@@ -1,27 +1,16 @@
-def topKFrequent( nums, k):
-    count_map = {}
-    bucket_array = [[]for i in range(len(nums)+1)]
-    print(bucket_array)
-    for i,num in enumerate(nums):
-        current_count = count_map.get(num,0)
-        count_map[num] = current_count + 1     
-    print(count_map)
+class Solution:
+    def topKFrequent(self, nums, k):
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
 
-    for key,value in count_map.items():
-        bucket_array[value].append(key)
-
-    print(bucket_array)
-
-    top_k_frequent_element = []
-    for i in range(len(bucket_array)-1, -1, -1):
-        if len(bucket_array[i]):
-            top_k_frequent_element.append(bucket_array[i])
+        for num in nums:
+            count[num] = 1 + count.get(num, 0)
+        for num, cnt in count.items():
+            freq[cnt].append(num)
         
-        if len(top_k_frequent_element) == k:
-            return top_k_frequent_element
-
-
-
-
-res = topKFrequent([1,1,1,2,2,3],2)
-print("RES :", res)
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for num in freq[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
