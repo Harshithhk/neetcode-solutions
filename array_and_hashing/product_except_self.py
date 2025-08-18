@@ -1,4 +1,4 @@
-def productExceptSelf(self, nums):
+def productExceptSelf(nums):
     output = [1] * len(nums)
 
     left = 1
