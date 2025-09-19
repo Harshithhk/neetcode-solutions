@@ -1,2 +1,0 @@
-def topK(nums,k):
-    

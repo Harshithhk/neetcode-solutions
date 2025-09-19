@@ -1,14 +1,14 @@
 def productExceptSelf(nums):
     output = [1] * len(nums)
 
-    left = 1
+    prefix = 1
     for i in range(len(nums)):
-        output[i] *= left
-        left *= nums[i]
+        output[i] *= prefix
+        prefix *= nums[i]
 
-    right = 1
+    postfix = 1
     for i in range(len(nums) - 1, -1, -1):
-        output[i] *= right
-        right *= nums[i]
+        output[i] *= postfix
+        postfix *= nums[i]
 
     return output
